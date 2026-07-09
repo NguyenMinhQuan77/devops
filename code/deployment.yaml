@@ -6,7 +6,7 @@ metadata:
   labels:
     app: devops-api
 spec:
-  replicas: 2                    # chạy 2 pod, để thấy load balancing qua Service ở bước sau
+  replicas: 2                  
   selector:
     matchLabels:
       app: devops-api
@@ -26,13 +26,13 @@ spec:
                 secretKeyRef:
                   name: mongo-secret
                   key: MONGO_URI
-          readinessProbe:         # K8s tự check pod đã "sẵn sàng" nhận traffic chưa
+          readinessProbe:         
             httpGet:
               path: /health
               port: 8000
             initialDelaySeconds: 5
             periodSeconds: 10
-          livenessProbe:          # K8s tự check pod còn "sống" không, chết thì tự restart pod
+          livenessProbe:         
             httpGet:
               path: /health
               port: 8000

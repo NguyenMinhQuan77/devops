@@ -3,9 +3,9 @@ kind: Service
 metadata:
   name: devops-api-svc
 spec:
-  type: ClusterIP          # chỉ truy cập được từ TRONG cluster, không expose ra ngoài internet
+  type: ClusterIP       
   selector:
-    app: devops-api        # chọn đúng pod có label này (khớp với Deployment ở trên)
+    app: devops-api      
   ports:
-    - port: 80              # port của Service (client trong cluster gọi vào đây)
-      targetPort: 8000       # port thật container đang listen (khớp containerPort ở Deployment)
+    - port: 80             
+      targetPort: 8000     
