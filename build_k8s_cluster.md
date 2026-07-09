@@ -263,7 +263,13 @@ $HOME/.kube/config
 sudo chown $(id -u):$(id -g) \
 $HOME/.kube/config
 ```
+### Install Calico CNI
 
+> **Quan trọng:** Cluster sẽ ở trạng thái `NotReady` cho đến khi cài CNI.
+
+```bash
+kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
+```
 ---
 
 ## 5.2 Install Calico CNI
