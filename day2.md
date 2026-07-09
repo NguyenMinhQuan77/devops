@@ -83,13 +83,13 @@ uv run uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 
 ```
 # test 1: health check
-curl http://localhost:8000/health
+curl http://10.24.28.115:8000/health
 
 # test 2: tạo item mới
-curl -X POST http://localhost:8000/api/items \
+curl -X POST http://10.24.28.115:8000/api/items \
   -H "Content-Type: application/json" \
   -d '{"hostname":"web-03","ip":"192.168.100.12","role":"webserver"}'
 
 # test 3: list toàn bộ item
-curl http://localhost:8000/api/items
+curl http://10.24.28.115:8000/api/items
 ```
