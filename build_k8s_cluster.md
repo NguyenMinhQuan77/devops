@@ -248,7 +248,7 @@ k8s-master-1
 
 ```bash
 sudo kubeadm init \
---control-plane-endpoint "192.168.100.105:6443" \
+--control-plane-endpoint "10.24.28.111:6443" \
 --upload-certs
 ```
 
