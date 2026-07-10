@@ -19,3 +19,26 @@ helm upgrade ingress-nginx ingress-nginx/ingress-nginx \
   --set controller.tolerations[0].operator=Exists \
   --set controller.tolerations[0].effect=NoSchedule
 ```
+- tạo ingress
+```
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: devops-api-ingress
+  namespace: devops-api
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx       
+  rules:
+    - host: devops-api.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: devops-api-svc     
+                port:
+                  number: 80            
+```

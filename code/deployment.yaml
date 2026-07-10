@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: devops-api
-          image: nguyenminhquan77/devops-api:v2
+          image: nguyenminhquan77/devops-api:v3
           ports:
             - containerPort: 8000
           env:
@@ -26,15 +26,23 @@ spec:
                 secretKeyRef:
                   name: mongo-secret
                   key: MONGO_URI
+          resources:
+            requests:
+              cpu: "100m"       
+              memory: "64Mi"
+            limits:
+              cpu: "200m"      
+              memory: "128Mi"
           readinessProbe:         
             httpGet:
               path: /health
               port: 8000
             initialDelaySeconds: 5
             periodSeconds: 10
-          livenessProbe:         
+          livenessProbe:
             httpGet:
-              path: /health
+              path: /livez          
               port: 8000
             initialDelaySeconds: 10
-            periodSeconds: 20
+            periodSeconds: 15
+            failureThreshold: 3 
