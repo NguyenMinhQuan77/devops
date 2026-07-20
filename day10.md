@@ -11,7 +11,7 @@ gitlab-runner --version
 ```
 sudo gitlab-runner register \
   --url "https://gitlab.citigo.com.vn" \
-  --token "********" \
+  --token "*" \
   --executor "docker" \
   --docker-image "alpine:latest" \
   --description "local-lab-runner"
